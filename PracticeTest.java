@@ -105,6 +105,7 @@ public class PracticeTest {
 				if ( queue.empty() || stack.empty()) {
 					emptiedEarly = true;
 				}
+				// stack.peek();
 				queue.dequeue();
 				stack.pop();
 			}
