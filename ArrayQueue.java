@@ -1,7 +1,7 @@
 public class ArrayQueue<T> implements Queue<T> {
-    private static final int DEFAULT_CAPACITY = 10;
-    private int cap, cur, front, back;
-    private T[] arr;
+    private static final int DEFAULT_CAPACITY = 10;// starting size
+    private int cap, cur, front, back;// to keep track
+    private T[] arr;// the array
 
     public ArrayQueue() {
         cap = DEFAULT_CAPACITY;//to keep track on when to grow
@@ -9,20 +9,20 @@ public class ArrayQueue<T> implements Queue<T> {
         back = -1;//the tail
         front = 0;//the head 
     }
-
+    //if the pointer is 0 than its empty
     public boolean empty() {
 
         return (cur == 0);
 
     }
-
+    // update the 1st in line after to keep array a good size
     public T getFront() {
         if(empty()){
             return null;
         }else{
         return arr[front % cap];}
     }
-
+    //makes sure that its not empty than saves the 1st in line makes it empty and moves the front up one index than the pointer back one index
     public T dequeue() throws Exception {
         if (empty())
             throw new Exception("dequeue error");
@@ -32,7 +32,7 @@ public class ArrayQueue<T> implements Queue<T> {
         cur--;
         return result;
     }
-
+    //
     public void enqueue(T item) {
         if (isFull()) {
             doubleSize();
@@ -41,7 +41,7 @@ public class ArrayQueue<T> implements Queue<T> {
         arr[back % cap] = item;
         cur++;
     }
-
+    //makes a temp array 2x size, copy, old array into the new one. than set the old to be the new array
     private void doubleSize() {
         T[] newArray = (T[]) new Object[2 * cap];
 
